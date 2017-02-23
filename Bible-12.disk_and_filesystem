@@ -1,0 +1,39 @@
+《Linux宝典 第9版》
+Chapter 12 磁盘管理和文件系统
+
+ls /dev/sd*
+fdisk -l /dev/sda
+
+tail -f /var/log/messages
+
+
+# 分区操作
+fdisk /dev/sd?
+	:p	#查看所有分区
+	:d	#删除分区
+	:n	#新建分区
+	:w	#保存更改
+
+
+# 分区与格式化
+mkfs -t ext4 /dev/sdc1		#将第3个磁盘的第1个分区格式化成ext4文件系统
+mkswap /dev/sdc2			#将第3个磁盘的第2个分区格式化成交换分区
+mkfs /dev/sdc3				#将第3个磁盘的第3个分区格式化成ext2文件系统（默认值）
+mkfs -t vfat /dev/sdc5		#将第3个磁盘的第5个分区格式化成VFAT文件系统
+pvcreate /dev/sdc6			#将第3个磁盘的第6个分区格式化成LVM物理卷
+
+#如果想要在Linux、Windows和Mac系统之间共享文件，需要一个VFAT文件系统。
+
+
+#挂载磁盘
+mkdir -p /mnt/sd0
+mount -t ntfs /dev/sdn /mnt/sd0
+df -h /mnt/sd0
+mount	#查看所有已挂载磁盘
+
+
+#使用逻辑卷管理分区（LVM）
+......
+...
+
+
