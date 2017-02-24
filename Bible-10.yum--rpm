@@ -1,0 +1,87 @@
+《Linux宝典 第9版》
+Chapter 10 获取和管理软件
+
+
+rpm -q firefox				# 查询软件名
+rpm -qi firefox				# 查询软件信息
+
+
+	YUM--------Yellowdog Updater Modifier
+/etc/yum.config				# yum配置
+/etc/yun.repos.d/			# yum版本库信息
+
+/var/log/yum.log			# yum日志
+/var/cache/yum/				# 软件库元数据信息
+/var/lib/rpm/				# 本地rpm数据库
+/var/lib/yum/
+
+yum search editor			# 搜索软件
+yum list firefox			# 列出匹配到的所有软件
+yum info emacs				# 查看软件信息
+yum provides dvdrecord		# ???
+
+yum list available			# 列出所有可安装的软件
+yum list installed			# 列出已安装的所有软件
+yum deeplist emacs | less	# 查看软件依赖与提供者
+
+yum install emacs			# 安装软件
+yum reinstall zsh			# 重新安装
+
+yum erase emacs				# 删除软件包
+yum remove emacs			# 删除软件包及其依赖
+
+yum history
+yum history info 96
+yum history undo 96
+
+yum check-update			# 检查更新
+yum update					# 更新全部
+yum update cups
+
+# 软件包组
+yum grouplist | less
+yum groupinfo LXDE
+yum groupinstall LXDE
+yum groupremove LXDE
+
+yum clean packages			#
+yum clean metadata
+yum clean all
+
+yum check					# 检查本地数据库
+yum clean rpmdb				# 清除本地rpm数据库
+
+yumdownloader firefox		# 下载软件安装包
+
+
+
+============================ rpm ==========================
+
+rpm -i zsh-5.0.7-4.fc21.x86_64.rpm		# 安装
+rpm -e emacs							# 卸载软件
+
+rpm -qi zsh		# 查询描述
+rpm -ql			# 查询文件列表
+rpm -qd			# 查询文档
+-----------------------------------
+rpm -qc			# 查询配置文件-----
+===================================
+
+rpm -q --requires emacs		# 查询依赖
+rpm -q --provides emacs		# 查询提供者
+rpm -q --scripts httpd		# 查看安装、卸载将触发的脚本
+rpm -q --changelog httpd | less		
+
+rpm -qip zsh-5.0.7-4.fc21.x86_64.rpm		# View info about the RPM file
+rpm -qlp zsh-5.0.7-4.fc21.x86_64.rpm		# List all files in RPM file
+rpm -qdp zsh-5.0.7-4.fc21.x86_64.rpm		# Show docs in the RPM file
+rpm -qcp zsh-5.0.7-4.fc21.x86_64.rpm		# List config files in RPM file
+
+# 验证RPM软件包 示例：
+rpm -i zsh-5.0.7-4.fc21.x86_64.rpm		
+echo hello > /bin/zsh
+rm /etc/zshrc
+rpm -V zsh		# ====== 验证 ======
+
+
+
