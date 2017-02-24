@@ -27,9 +27,9 @@ pvcreate /dev/sdc6			#将第3个磁盘的第6个分区格式化成LVM物理卷
 
 #挂载磁盘
 mkdir -p /mnt/sd0
-mount -t ntfs /dev/sdn /mnt/sd0
-df -h /mnt/sd0
-mount	#查看所有已挂载磁盘
+mount -t ntfs /dev/sdn /mnt/sd0		# 以特定文件系统挂载磁盘
+df -h /mnt/sd0						# 查看磁盘信息
+mount								# 查看所有已挂载磁盘
 
 
 #使用逻辑卷管理分区（LVM）

@@ -1,0 +1,82 @@
+《Linux宝典 第9版》
+Chapter-8 学习系统管理
+
+负责管理所有Linux系统资源的人被称为系统管理员。
+
+
+journalctl -f			# 显示最新进入journal的消息
+tail -f /var/log/messages	
+dmesg | less			# 查看系统启动时所检测到的硬件以及被内核加载的驱动程序
+
+
+su					#切换到root用户，但不读取root用户的环境
+su -				#切换到root用户，并读取root用户环境
+su - jsmith			#切换到jsmith用户，并读取其用户环境
+
+
+#管理命令
+/sbin				#包含启动系统所需的命令
+/usr/sbin			#
+
+/usr/local/bin
+/usr/local/sbin
+/opt/bin
+
+
+#配置文件
+/etc/cron*			#配置定时任务
+/etc/default		#默认值、默认行为
+/etc/httpd	/etc/apache	 /etc/apache2	#Apache Web Server配置
+/etc/rc?d			#系统状态配置
+/etc/security		#安全设置
+/etc/skel			#新用户目录结构
+
+/etc/sysconfig		#服务配置
+/etc/systemd		# systemctl
+
+/etc/fstab			#磁盘自动挂载与文件系统配置
+/etc/mtab			#包含当前已挂载的文件系统列表
+
+/etc/hosts.allow	
+/etc/hosts.deny
+
+/etc/cups			#打印机信息
+
+#其他
+mtools.conf
+named.conf
+ntp.conf
+printcap
+
+protocols
+rpc
+services
+
+sudoers
+shells
+rsyslog.conf			# 配置日志
+termcap
+
+
+Linux做的比较好的一件事是能够持续跟踪自己。
+对于Linux系统来说，并不需要使用Systemd，用来记录错误和调试信息的主要实用工具是rsyslogd守护进程。
+虽然仍然可以通过Systemd系统使用rsyslogd，但Systemd有其自己收集和显示消息的方法（使用journalctl命令），被称为Systemd Journal。
+
+journalctl -f			# 显示最新进入journal的消息
+tail -f /var/log/messages	
+dmesg | less			# 查看系统启动时所检测到的硬件以及被内核加载的驱动程序
+
+/var/log/boot			# 服务启动的相关消息
+/var/log/messages		# 系统一般信息消息
+/var/log/cups/			# 打印机相关消息
+
+
+lspci -vvv				# 查看连接的pci总线上的设备
+lsusb 
+lscpu
+
+lsmod					# 查看已加载到内核的模块
+modinfo -d e1000		# 查看模块描述
+modinfo -a				# 查看模块作者
+modinfo -n				# 查看模块文件
+
