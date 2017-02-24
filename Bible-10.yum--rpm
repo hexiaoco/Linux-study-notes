@@ -60,6 +60,8 @@ yumdownloader firefox		# 下载软件安装包
 rpm -i zsh-5.0.7-4.fc21.x86_64.rpm		# 安装
 rpm -e emacs							# 卸载软件
 
+
+# rpm查询
 rpm -qi zsh		# 查询描述
 rpm -ql			# 查询文件列表
 rpm -qd			# 查询文档
