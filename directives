@@ -1,0 +1,2 @@
+
+find ~ -xdev -size +100M | xargs ls -lh			# 列出大文件
