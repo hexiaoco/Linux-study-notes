@@ -1,5 +1,5 @@
 
 PS1=[\u@\h \W]\$								# 设置提示符
 find /etc/ | xargs grep 9009					# 遍历文件查找指定字符
-find ~ -xdev -size +100M | xargs ls -lh			# 列出大文件
+find ~ -xdev -size +100M | xargs ls -lhS		# 列出大文件
 
